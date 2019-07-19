@@ -28,7 +28,7 @@ let r = {
             },
             {
                 "title": "Resume",
-                "hide-on-print": true,
+                "className": "hidden-print",
                 "content": "PDF Download",
                 "link": "https://jasonlawton.com/resume/Jason-Lawton-Resume.pdf"
             }
@@ -37,6 +37,31 @@ let r = {
     "about": {
         "attributes": { },
         "content": "Self-motivated team player who utilizes knowledge, skills, and experience that has been acquired over 15 years as a Web Developer to solve problems through exploring different possibilities and determining the best course of action. Also has diverse knowledge and experience designing and developing websites and content management systems for end users."
+    },
+    "profiles": {
+        "attributes": {},
+        "data": [
+            {
+                "title": "Github",
+                "content": "phoopee3",
+                "link": "https://github.com/phoopee3"
+            },
+            {
+                "title": "StackOverflow",
+                "content": "jason",
+                "link": "http://stackoverflow.com/users/128532/jason"
+            },
+            {
+                "title": "WordPress",
+                "content": "phoopee3",
+                "link": "https://profiles.wordpress.org/phoopee3/"
+            },
+            {
+                "title": "LinkedIn",
+                "content": "Jason Lawton",
+                "link": "https://www.linkedin.com/in/jason-lawton"
+            }
+        ]
     }
 };
 
@@ -45,7 +70,8 @@ class Resume extends React.Component {
         let components = {
             header: Header,
             contact: Contact,
-            about: About
+            about: About,
+            profiles: Profiles
         };
         let content = [];
         var TempComponent;
@@ -96,6 +122,7 @@ class Header extends React.Component {
         )
     }
 }
+
 class Contact extends React.Component {
     render() {
         // <div class="col-sm-6 col-xs-3">
@@ -120,10 +147,19 @@ class Contact extends React.Component {
         // </div>
 
         let contactMethods = this.props.data.data.map((item) => {
+            let elementClass = "col-sm-6 col-xs-3 ";
+            if ( typeof(item.className) != 'undefined' ) {
+                elementClass += item.className;
+            }
             return (
-                <div class="col-sm-6 col-xs-3">
+                <div className={elementClass}>
                     <strong>{item.title}</strong>
-                    <div>{item.content}</div>
+                    <div>
+                        { item.link &&
+                            <a href={item.link}>{item.content}</a>
+                        }
+                        { !item.link && <span>{item.content}</span> }
+                    </div>
                 </div>
             );
         });
@@ -156,6 +192,39 @@ class About extends React.Component {
         )
     }
 }
+
+class Profiles extends React.Component {
+    render() {
+
+        let profiles = this.props.data.data.map((item) => {
+            return (
+                <div className="col-sm-6 col-xs-6">
+                    <strong className="network">
+                        {item.title}
+                    </strong>
+                    <div className="username">
+                        <div className="url">
+                            <a className="show-print-link" href={item.link}>{item.content}</a>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+        return (
+            <section id="profiles" class="row">
+                <aside class="col-sm-3">
+                    <h3>Profiles</h3>
+                </aside>
+                <div class="col-sm-9">
+                    <div class="row">
+                        {profiles}
+                    </div>
+                </div>
+            </section>
+        )
+    }
+}
+
 
 ReactDOM.render(
     <Resume />,
