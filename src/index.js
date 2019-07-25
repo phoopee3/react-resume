@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './assets/bootstrap.min.css';
+import './assets/octicons.min.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -208,6 +210,63 @@ let r = {
             }
         ]
     },
+    "volunteer": {
+        "attributes": {},
+        "data": [
+            {
+                "title": "Northern NJ WordPress Meetup",
+                "date-from": "2017-06",
+                "date-to": "current",
+                "subtitle": "Co-organizer",
+                "link": "https://www.meetup.com/WordPress-Montclair-Meetup/",
+                "link-text": "https://www.meetup.com/WordPress-Montclair-Meetup/",
+                "description": "Cameron Barrett resurrected the WordPress meetup in early 2017, and I quickly joined as a member and then started assisting as a co-organizer along with two other people. Over the past 2 years, we have grown the meetup from 300 members to over 1200 members.",
+                "highlights": {
+                    "title": "Highlights",
+                    "items": [
+                        { "content": "Help desk meetup - we offer help to local WordPress users on a wide variety of WordPress questions." },
+                        { "content": "WordPress professionals meetup - a meetup for professionals who use WordPress in their workplace, and where discussions on trends and problem solving take place." },
+                        { "content": "Talk by an Expert - a local WordPress/Subject Matter Expert presents on a topic." }
+                    ]
+                }
+            },
+            {
+                "title": "WordCamp Montclair 2019",
+                "date-from": "2019-06-01",
+                "date-to": "2019-06-02",
+                "subtitle": "Co-organizer",
+                "link": "https://2019.montclair.wordcamp.org",
+                "link-text": "https://2019.montclair.wordcamp.org",
+                "description": "With the size of our WordPress meetup reaching a certain level, the next step was clear to have a WordCamp for our WordPress community. Along with 5-10 other volunteers, we were able to organize a highly successful first WordCamp in the state of New Jersey.",
+                "highlights": {
+                    "title": "Highlights",
+                    "items": [
+                        { "content": "Assisted in styling the 2019 WordCamp Montclair site." },
+                        { "content": "Worked with another volunteer to send out mailings for announcing the meetup, call for speakers, and selling tickets." },
+                        { "content": "Speaker Wrangler for 20 speakers. Main point of contact, in charge of getting all the speaker information and presentations." },
+                        { "content": "Created the schedule for the conference." }
+                    ]
+                }
+            },
+            {
+                "title": "Northern NJ WordPress Meetup",
+                "date-from": "2012-01",
+                "date-to": "2012-06",
+                "subtitle": "Organizer",
+                "link": "",
+                "link-text": "",
+                "description": "For 6 months, I took over as the organizer of the Northern NJ WordPress Meetup. It was a defunct organization on meetup.com which wasn't having any meetings. I took over and was able to have monthly meetings over a six month timeframe. I had to step down as the organizer due to my job changing and having a longer commute.",
+                "highlights": {
+                    "title": "Highlights",
+                    "items": [
+                        { "content": "Presented on how to set up WordPress using Bitnami." },
+                        { "content": "Local WordPress developers came and presentationed on what they had built and the methods they used." },
+                        { "content": "Held Q&A/help sessions in the second half of each meeting where people would ask questions about themes and plugins." }
+                    ]
+                }
+            }
+        ]
+    },
 };
 
 class Resume extends React.Component {
@@ -218,6 +277,7 @@ class Resume extends React.Component {
             about: About,
             profiles: Profiles,
             work: Work,
+            volunteer: Volunteer,
         };
         let content = [];
         var TempComponent;
@@ -289,16 +349,18 @@ class Contact extends React.Component {
             );
         });
         return (
-            <section id="contact" class="row">
-                <aside class="col-sm-3">
-                    <h3>Contact</h3>
-                </aside>
-                <div class="col-sm-9">
-                    <div class="row">
-                        {contactMethods}
+            <div className="container">
+                <section id="contact" className="row">
+                    <aside className="col-sm-3">
+                        <h3>Contact</h3>
+                    </aside>
+                    <div className="col-sm-9">
+                        <div className="row">
+                            {contactMethods}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         )
     }
 }
@@ -306,14 +368,16 @@ class Contact extends React.Component {
 class About extends React.Component {
     render() {
         return (
-            <section id="about" class="row">
-                <aside class="col-sm-3">
-                    <h3>About</h3>
-                </aside>
-                <div class="col-sm-9">
-                    <p>{this.props.data.content}</p>
-                </div>
-            </section>
+            <div className="container">
+                <section id="about" className="row">
+                    <aside className="col-sm-3">
+                        <h3>About</h3>
+                    </aside>
+                    <div className="col-sm-9">
+                        <p>{this.props.data.content}</p>
+                    </div>
+                </section>
+            </div>
         )
     }
 }
@@ -336,16 +400,18 @@ class Profiles extends React.Component {
             );
         });
         return (
-            <section id="profiles" class="row">
-                <aside class="col-sm-3">
+            <div className="container">
+                <section id="profiles" className="row">
+                <aside className="col-sm-3">
                     <h3>Profiles</h3>
                 </aside>
-                <div class="col-sm-9">
-                    <div class="row">
+                <div className="col-sm-9">
+                    <div className="row">
                         {profiles}
                     </div>
                 </div>
             </section>
+            </div>
         )
     }
 }
@@ -355,24 +421,24 @@ class Work extends React.Component {
     render() {
         let content = this.props.data.data.map( (work) => {
             return(
-                <div class="col-sm-12">
-                    <h4 class="strike-through">
+                <div className="col-sm-12">
+                    <h4 className="strike-through">
                         <span>{work.title}</span>
-                        <span class="date">
+                        <span className="date">
                             {work['date-from']}
                             - 
                             { work['date-to'] }
                             </span>
                     </h4>
-                    <div class="website pull-right">
+                    <div className="website pull-right">
                         { work.link && work['link-text'] &&
                             <a href="{work.link}">{work['link-text']}</a>
                         }
                     </div>
-                    <div class="position">
+                    <div className="position">
                         {work.subtitle}
                     </div>
-                    <div class="summary">
+                    <div className="summary">
                         <p>{work.description}</p>
                     </div>
                     { work.highlights && 
@@ -383,16 +449,67 @@ class Work extends React.Component {
         } );
         // console.log(this.props);
         return (
-            <section id="work" class="row">
-                <aside class="col-sm-3">
-                    <h3>Work</h3>
-                </aside>
-                <div class="col-sm-9">
-                    <div class="row">
-                        {content}
+            <div className="container">
+                <section id="work" className="row">
+                    <aside className="col-sm-3">
+                        <h3>Work</h3>
+                    </aside>
+                    <div className="col-sm-9">
+                        <div className="row">
+                            {content}
+                        </div>
                     </div>
+                </section>
+            </div>
+        )
+    }
+}
+
+class Volunteer extends React.Component {
+    // this.props.data.data is an array
+    render() {
+        let content = this.props.data.data.map( (volunteer) => {
+            return(
+                <div className="col-sm-12">
+                    <h4 className="strike-through">
+                        <span>{volunteer.title}</span>
+                        <span className="date">
+                            {volunteer['date-from']}
+                            - 
+                            { volunteer['date-to'] }
+                            </span>
+                    </h4>
+                    <div className="website pull-right">
+                        { volunteer.link && volunteer['link-text'] &&
+                            <a href="{volunteer.link}">{volunteer['link-text']}</a>
+                        }
+                    </div>
+                    <div className="position">
+                        {volunteer.subtitle}
+                    </div>
+                    <div className="summary">
+                        <p>{volunteer.description}</p>
+                    </div>
+                    { volunteer.highlights && 
+                        <H4List data={volunteer.highlights} />
+                    }
                 </div>
-            </section>    
+            );
+        } );
+        // console.log(this.props);
+        return (
+            <div className="container">
+                <section id="volunteer" className="row">
+                    <aside className="col-sm-3">
+                        <h3>Volunteer</h3>
+                    </aside>
+                    <div className="col-sm-9">
+                        <div className="row">
+                            {content}
+                        </div>
+                    </div>
+                </section>
+            </div>
         )
     }
 }
