@@ -13,7 +13,7 @@ class Resume extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('resume.json')
+        axios.get('https://raw.githubusercontent.com/phoopee3/resume/master/resume.json')
             .then(res => {
                 console.log(res);
                 const resume = res.data;
@@ -106,7 +106,7 @@ class Contact extends React.Component {
             );
         });
         let data = {
-            section: this.constructor.name,
+            section: "Contact",
             content: contactMethods
         };
         return (
@@ -156,7 +156,7 @@ class Profiles extends React.Component {
             );
         });
         let data = {
-            section: this.constructor.name,
+            section: "Profiles",
             content: content
         };
         return (
@@ -197,7 +197,7 @@ class Work extends React.Component {
             );
         } );
         let data = {
-            section: this.constructor.name,
+            section: "Work",
             content: content
         };
         return (
@@ -284,7 +284,7 @@ class Education extends React.Component {
             );
         });
         let data = {
-            section: this.constructor.name,
+            section: "Education",
             content: content
         };
         return (
@@ -322,7 +322,7 @@ class Publications extends React.Component {
             );
         });
         let data = {
-            section: this.constructor.name,
+            section: "Publications",
             content: content
         };
         return (
@@ -347,7 +347,7 @@ class Skills extends React.Component {
             );
         });
         let data = {
-            section: this.constructor.name,
+            section: "Skills",
             content: content
         };
         return (

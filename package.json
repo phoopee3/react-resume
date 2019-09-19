@@ -1,5 +1,6 @@
 {
   "name": "resume",
+  "homepage" : "https://jasonlawton.com/resume/resume.html",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
