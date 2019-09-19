@@ -39,6 +39,9 @@ h1,h2,h3,h4{
 section{
     margin-top:30px;
 }
+ul {
+    margin-left:-1.4em;
+}
 li{
     line-height:1.8;
     list-style:none;
