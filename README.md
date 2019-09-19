@@ -11,7 +11,7 @@ Used as a method for me to learn react, but I realize this isn't a very "reactiv
 
 ## To do
 
-- [ ] Finish additional sections of resume
-- [ ] Conditional rendering for contact methods (links, classes, etc)
-- [ ] Load resume from an external source
-- [ ] Style
+- [x] Finish additional sections of resume
+- [x] Conditional rendering for contact methods (links, classes, etc)
+- [x] Load resume from an external source
+- [x] Style
